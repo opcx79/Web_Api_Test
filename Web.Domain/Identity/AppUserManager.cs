@@ -14,7 +14,7 @@ namespace Web.Domain.Identity
             AppUserManager manager = new AppUserManager(new UserStore<IdentityUser>(context.Get<AppDbContext>()));
             manager.PasswordValidator = new PasswordValidator
             {
-                RequireDigit = false,
+                RequireDigit = true,//false,
                 RequiredLength = 5,
             };
             manager.UserValidator = new UserValidator<IdentityUser>(manager)
@@ -25,7 +25,7 @@ namespace Web.Domain.Identity
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = new DataProtectorTokenProvider<IdentityUser>(dataProtectionProvider.Create("CBT App"));
+                manager.UserTokenProvider = new DataProtectorTokenProvider<IdentityUser>(dataProtectionProvider.Create("App"));
             }
             return manager;
         }
