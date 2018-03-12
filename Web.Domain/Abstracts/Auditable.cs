@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Web.Domain.Entity.Abstract
+namespace Web.Domain.Abstracts
 {
-    public abstract class Audit
+    public abstract class Auditable<T> : Entity<T>, IAuditable
     {
         public string CreatedBy { get; set; }
         public DateTime DateCreated { get; set; }

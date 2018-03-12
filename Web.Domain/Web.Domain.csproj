@@ -74,11 +74,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstracts\BaseEntity.cs" />
+    <Compile Include="Abstracts\Entity.cs" />
+    <Compile Include="Abstracts\IAuditable.cs" />
+    <Compile Include="Abstracts\IEntity.cs" />
     <Compile Include="Concrete\AppDbContext.cs" />
     <Compile Include="Concrete\AppDbInitializer.cs" />
-    <Compile Include="Entity\Abstract\Audit.cs" />
-    <Compile Include="Entity\Tag.cs" />
-    <Compile Include="Entity\Video.cs" />
+    <Compile Include="Abstracts\Auditable.cs" />
+    <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Entities\Video.cs" />
     <Compile Include="Identity\AppRoleManager.cs" />
     <Compile Include="Identity\AppUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

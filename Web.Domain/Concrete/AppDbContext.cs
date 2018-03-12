@@ -4,8 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Web.Domain.Entity;
-using Web.Domain.Entity.Abstract;
+using Web.Domain.Abstracts;
+using Web.Domain.Entities;
 
 namespace Web.Domain.Concrete
 {
@@ -46,11 +46,11 @@ namespace Web.Domain.Concrete
         void ImplementAuditableEntity()
         {
             var modifiedEntries = ChangeTracker.Entries()
-                .Where(x => x.Entity is Audit
+                .Where(x => x.Entity is IAuditable
                 && (x.State == EntityState.Added || x.State == EntityState.Modified));
             foreach (var entry in modifiedEntries)
             {
-                Audit entity = entry.Entity as Audit;
+                IAuditable entity = entry.Entity as IAuditable;
                 if (entity != null)
                 {
                     string identityName = Thread.CurrentPrincipal.Identity.Name;
