@@ -18,8 +18,8 @@ namespace Web.Domain.Concrete
             Database.SetInitializer(new AppDbInitializer());
         }
 
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<Video> Videos { get; set; }
+        public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<Video> Videos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
