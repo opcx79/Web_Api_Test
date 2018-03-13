@@ -78,6 +78,13 @@
     <Compile Include="Abstracts\Entity.cs" />
     <Compile Include="Abstracts\IAuditable.cs" />
     <Compile Include="Abstracts\IEntity.cs" />
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposible.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Repository\EntityBaseRepository.cs" />
+    <Compile Include="Repository\IEntityBaseRepository.cs" />
     <Compile Include="Concrete\AppDbContext.cs" />
     <Compile Include="Concrete\AppDbInitializer.cs" />
     <Compile Include="Abstracts\Auditable.cs" />
@@ -91,6 +98,8 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Abstracts\Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
