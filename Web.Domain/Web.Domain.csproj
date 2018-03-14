@@ -83,6 +83,7 @@
     <Compile Include="Infrastructure\IDbFactory.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\EntityBaseRepository.cs" />
     <Compile Include="Repository\IEntityBaseRepository.cs" />
     <Compile Include="Concrete\AppDbContext.cs" />
