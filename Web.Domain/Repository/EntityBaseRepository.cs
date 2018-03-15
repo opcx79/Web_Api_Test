@@ -23,6 +23,10 @@ namespace Web.Domain.Abstracts.Services
         protected AppDbContext DbContext
         {
             get { return _dbContext ?? (_dbContext = DbFactory.Initialize()); }
+            private set
+            {
+                _dbContext = value;
+            }
         }
 
         public EntityBaseRepository(IDbFactory dbFactory)
@@ -34,7 +38,7 @@ namespace Web.Domain.Abstracts.Services
 
         public virtual async Task<IEnumerable<T>> AllIncludingAsync(params Expression<Func<T, object>>[] includeProperties)
         {
-            IQueryable<T> query = _dbContext.Set<T>();
+            IQueryable<T> query = DbContext.Set<T>();
             foreach (var includeProperty in includeProperties)
             {
                 query = query.Include(includeProperty);
@@ -44,12 +48,12 @@ namespace Web.Domain.Abstracts.Services
 
         public virtual async Task<IEnumerable<T>> AllAsync()
         {
-            return await _dbContext.Set<T>().ToListAsync();
+            return await DbContext.Set<T>().ToListAsync();
         }
 
         public virtual async Task<IEnumerable<T>> FindByAsync(Expression<Func<T, bool>> predicate)
         {
-            return await _dbContext.Set<T>().Where(predicate).ToListAsync();
+            return await DbContext.Set<T>().Where(predicate).ToListAsync();
         }
 
         /// <summary>
@@ -64,26 +68,26 @@ namespace Web.Domain.Abstracts.Services
         /// <returns></returns>
         public virtual async Task<T> GetByIdAsync(object Id)
         {
-            var entity = await _dbContext.Set<T>().FindAsync(Id);
+            var entity = await DbContext.Set<T>().FindAsync(Id);
             if (entity == null) return default(T); else return entity;
         }
 
         public void Create(T entity)
         {
             if (entity == null) throwError();
-            _dbContext.Entry(entity).State = EntityState.Added;
+            DbContext.Entry(entity).State = EntityState.Added;
         }
 
         public void Delete(T entity)
         {
             if (entity == null) throwError();
-            _dbContext.Entry(entity).State = EntityState.Deleted;
+            DbContext.Entry(entity).State = EntityState.Deleted;
         }
 
         public void Update(T entity)
         {
             if (entity == null) throwError();
-            _dbContext.Entry(entity).State = EntityState.Modified;
+            DbContext.Entry(entity).State = EntityState.Modified;
         }
 
         void throwError()

@@ -83,6 +83,10 @@
     <Compile Include="Infrastructure\IDbFactory.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201803141420008_initial.cs" />
+    <Compile Include="Migrations\201803141420008_initial.Designer.cs">
+      <DependentUpon>201803141420008_initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\EntityBaseRepository.cs" />
     <Compile Include="Repository\IEntityBaseRepository.cs" />
@@ -101,6 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstracts\Services\" />
+    <Folder Include="SQL Query\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803141420008_initial.resx">
+      <DependentUpon>201803141420008_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
