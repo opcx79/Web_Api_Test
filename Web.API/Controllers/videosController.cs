@@ -31,35 +31,42 @@ namespace Web.API.Controllers
         }
 
         // GET: api/videos/5
-        public async Task<IHttpActionResult> Get(int id)
+        public async Task<IHttpActionResult> Get(Guid id)
         {
-            var video = await _videoRepo.GetByIdAsync(id);
-            if (video == null)
-                return BadRequest("Video Null");
-            else
-                return Ok(video);
+            return Ok(await _videoRepo.GetByIdAsync(id));
+
         }
 
         // POST: api/videos
-        public async Task<IHttpActionResult> Post([FromBody]Video value)
+        public async Task<IHttpActionResult> Post([FromBody]Video model)
         {
             if (ModelState.IsValid)
             {
-                _videoRepo.Create(value);
-                var v =  await _unitOfWork.SaveChangesAsync();
-                return Ok();
+                _videoRepo.Create(model);
+                var v = await _unitOfWork.SaveChangesAsync();
+                return Ok(v);
             }
-            return BadRequest();
+            return BadRequest(ModelState);
         }
 
         // PUT: api/videos/5
-        public void Put(int id, [FromBody]string value)
+        public async Task<IHttpActionResult> Put(Guid id, [FromBody]Video model)
         {
+            if (ModelState.IsValid)
+            {
+                _videoRepo.Update(model);
+                var v = await _unitOfWork.SaveChangesAsync();
+                return Ok();
+            }
+            return BadRequest(ModelState);
         }
 
         // DELETE: api/videos/5
-        public void Delete(int id)
+        public async Task Delete(Guid id)
         {
+            var v = await _videoRepo.GetByIdAsync(id);
+            _videoRepo.Delete(v);
+            await _unitOfWork.SaveChangesAsync();
         }
     }
 }

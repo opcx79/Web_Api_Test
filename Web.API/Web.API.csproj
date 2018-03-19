@@ -129,6 +129,7 @@
     <Compile Include="App_Start\DI.cs" />
     <Compile Include="App_Start\StartupAuth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\tagsController.cs" />
     <Compile Include="Controllers\videosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

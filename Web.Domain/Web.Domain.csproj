@@ -91,6 +91,10 @@
     <Compile Include="Migrations\201803151543196_updateOne.Designer.cs">
       <DependentUpon>201803151543196_updateOne.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803191001395_second.cs" />
+    <Compile Include="Migrations\201803191001395_second.Designer.cs">
+      <DependentUpon>201803191001395_second.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\EntityBaseRepository.cs" />
     <Compile Include="Repository\IEntityBaseRepository.cs" />
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803151543196_updateOne.resx">
       <DependentUpon>201803151543196_updateOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803191001395_second.resx">
+      <DependentUpon>201803191001395_second.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

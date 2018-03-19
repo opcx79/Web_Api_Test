@@ -57,7 +57,7 @@ namespace Web.Domain.Concrete
                     DateTime now = DateTime.Now;
                     if (entry.State == EntityState.Added)
                     {
-                        entity.CreatedBy = identityName;
+                        entity.CreatedBy = "TestUser"; //identityName;
                         entity.DateCreated = now;
                     }
                     else
@@ -66,7 +66,7 @@ namespace Web.Domain.Concrete
                         Entry(entity).Property(x => x.DateCreated).IsModified = false;
                     }
 
-                    entity.UpdatedBy = identityName;
+                    entity.UpdatedBy = "TestUser"; //identityName;
                     entity.UpdatedDate = now;
                 }
             }
